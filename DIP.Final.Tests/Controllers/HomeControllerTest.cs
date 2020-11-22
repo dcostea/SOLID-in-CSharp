@@ -13,6 +13,8 @@ namespace DIP.Final.Tests.Controllers
     {
         private Mock<IDogRepository> dogRepositoryMock;
 
+        //TODO Add BadRequest and other unit tests
+
         [Test]
         public void Controller_GetAll_ReturnValidList()
         {

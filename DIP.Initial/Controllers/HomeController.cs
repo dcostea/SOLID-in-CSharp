@@ -29,11 +29,6 @@ namespace DIP.Initial.Controllers
         [HttpPost]
         public ActionResult Post(Dog dog)
         {
-            if (dog is null)
-            {
-                NotFound();
-            }
-
             IDogRepository dogRepository = new DogRepository();
             dogRepository.Insert(dog);
 

@@ -1,4 +1,6 @@
-﻿namespace DIP.Final.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DIP.Final.Models
 {
-    public record Dog(int Age, string Name, string Trick) : Pet(Age, Name);
+    public record Dog([Range(0, 30)] int Age, [Required] string Name,  [MinLength(2)] string Trick) : Pet(Age, Name);
 }

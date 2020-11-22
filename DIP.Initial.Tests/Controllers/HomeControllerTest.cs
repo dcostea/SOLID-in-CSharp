@@ -10,6 +10,8 @@ namespace DIP.Initial.Tests.Controllers
     [TestFixture]
     public class HomeControllerTest
     {
+        //TODO Add BadRequest and other unit tests
+
         [Test]
         public void Controller_GetAll_ReturnValidList()
         {
