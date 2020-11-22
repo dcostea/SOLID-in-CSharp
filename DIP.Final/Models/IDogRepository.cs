@@ -2,8 +2,10 @@
 
 namespace DIP.Final.Models
 {
-    public interface IPetRepository
+    public interface IDogRepository
     {
         IEnumerable<Pet> GetAll();
+        Dog GetByName(string name);
+        void Insert(Dog dog);
     }
 }

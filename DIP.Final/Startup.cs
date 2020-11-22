@@ -22,7 +22,7 @@ namespace DIP.Final
         {
             services.AddControllers();
 
-            services.AddScoped<IPetRepository, PetRepository>();
+            services.AddScoped<IDogRepository, DogRepository>();
 
             services.AddSwaggerGen(c =>
             {

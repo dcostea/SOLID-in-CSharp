@@ -1,7 +1,4 @@
 ﻿namespace DIP.Final.Models
 {
-    public class Dog : Pet
-    {
-        public string Trick { get; set; }
-    }
+    public record Dog(int Age, string Name, string Trick) : Pet(Age, Name);
 }

@@ -11,25 +11,66 @@ namespace DIP.Final.Tests.Controllers
     [TestFixture]
     public class HomeControllerTest
     {
-        private Mock<IPetRepository> dogRepositoryMock;
+        private Mock<IDogRepository> dogRepositoryMock;
 
         [Test]
-        public void PetControllerMocked()
+        public void Controller_GetAll_ReturnValidList()
         {
             // Arrange
-            dogRepositoryMock = new Mock<IPetRepository>();
-            IPetRepository petRepository = dogRepositoryMock.Object;
+            dogRepositoryMock = new Mock<IDogRepository>();
+            IDogRepository petRepository = dogRepositoryMock.Object;
             dogRepositoryMock.Setup(call => call.GetAll())
-                .Returns(new List<Pet> { new Pet { Age = 2, Name = "PhiPhi" } });
+                .Returns(new List<Dog> { new Dog(2, "PhiPhi", "smile") });
             var controller = new HomeController(dogRepositoryMock.Object);
 
             // Act
-            var response = controller.Get();
+            var response = controller.GetAll();
             var result = response.Result as OkObjectResult;
-            var pets = result.Value as IEnumerable<Pet>;
+            var dogs = result.Value as IEnumerable<Dog>;
 
             // Assert
-            Assert.AreEqual(1, pets.Count());
+            Assert.AreEqual(4, dogs.Count());
+        }
+
+        [Test]
+        public void Controller_GetByName_ReturnValidItem()
+        {
+            // Arrange
+            dogRepositoryMock = new Mock<IDogRepository>();
+            IDogRepository petRepository = dogRepositoryMock.Object;
+            dogRepositoryMock.Setup(call => call.GetAll())
+                .Returns(new List<Dog> { new Dog(2, "PhiPhi", "smile") });
+            var controller = new HomeController(dogRepositoryMock.Object);
+
+            var newName = "Spot";
+
+            // Act
+            var response = controller.GetByName(newName);
+            var result = response.Result as OkObjectResult;
+            var dog = result.Value as Dog;
+
+            // Assert
+            Assert.IsTrue(dog.Name == newName);
+        }
+
+        [Test]
+        public void Controller_Insert_Success()
+        {
+            // Arrange
+            dogRepositoryMock = new Mock<IDogRepository>();
+            IDogRepository petRepository = dogRepositoryMock.Object;
+            dogRepositoryMock.Setup(call => call.GetAll())
+                .Returns(new List<Dog> { new Dog(2, "PhiPhi", "smile") });
+            var controller = new HomeController(dogRepositoryMock.Object);
+
+            var dog = new Dog(7, "Spot", "duck");
+
+            // Act
+            var response = controller.Post(dog);
+            var result = response as CreatedResult;
+
+            // Assert
+            Assert.IsTrue(result.StatusCode == 201);
         }
     }
 }
