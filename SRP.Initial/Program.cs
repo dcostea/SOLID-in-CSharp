@@ -5,7 +5,7 @@ namespace ApexCode.SOLID.SRP.Initial
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var customer = new Person
             {

@@ -1,26 +1,25 @@
 ﻿using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DIP.Initial.Models;
-using Moq;
 using System.Collections.Generic;
 using DIP.Initial.Controllers;
-using System.Web.Mvc;
+using NUnit.Framework;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DIP.Initial.Tests.Controllers
 {
-    [TestClass]
+    [TestFixture]
     public class HomeControllerTest
     {
-        [TestMethod]
+        [Test]
         public void PetController()
         {
             // Arrange
-            var dogRepository = new DogRepository();
             var controller = new HomeController();
 
             // Act
-            var result = controller.Index() as ViewResult;
-            var pets = result.Model as List<Dog>;
+            var response = controller.Get();
+            var result = response.Result as OkObjectResult;
+            var pets = result.Value as IEnumerable<Pet>;
 
             // Assert
             Assert.AreEqual(4, pets.Count());

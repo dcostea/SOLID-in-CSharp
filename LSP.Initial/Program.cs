@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using static System.Console;
 
 namespace ApexCode.SOLID.LSP.Initial
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var ducks = new List<Duck>
             {

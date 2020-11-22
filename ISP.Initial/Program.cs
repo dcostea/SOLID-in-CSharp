@@ -5,7 +5,7 @@ namespace ApexCode.SOLID.ISP.Initial
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var snow = new Dove();
             snow.Chirp();

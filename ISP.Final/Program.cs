@@ -1,11 +1,10 @@
-﻿using System;
-using static System.Console;
+﻿using static System.Console;
 
 namespace ApexCode.SOLID.ISP.Final
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var snow = new Dove();
             snow.Chirp();

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace DIP.Final.Models
+﻿namespace DIP.Final.Models
 {
     public class Pet
     {

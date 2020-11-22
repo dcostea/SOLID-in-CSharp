@@ -1,30 +1,20 @@
 ﻿using DIP.Initial.Models;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace DIP.Initial.Controllers
 {
-    public class HomeController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class HomeController : ControllerBase
     {
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult<IEnumerable<Pet>> Get()
         {
             IPetRepository dogRepository = new DogRepository();
             var dogs = dogRepository.GetAll();
 
-            return View(dogs);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return Ok(dogs);
         }
     }
 }

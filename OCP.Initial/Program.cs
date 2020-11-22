@@ -4,7 +4,7 @@ namespace ApexCode.SOLID.OCP.Initial
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var someCountry = "RO";
             WriteLine($"{someCountry} is European Union Country: {IsEuropeanUnionCountry(someCountry)}");
@@ -14,20 +14,15 @@ namespace ApexCode.SOLID.OCP.Initial
 
         public static bool IsEuropeanUnionCountry(string country)
         {
-            switch (country)
+            return country switch
             {
-                case "UK":
-                    return true;
-                case "DE":
-                    return true;
-                case "FR":
-                    return true;
+                "UK" => true,
+                "DE" => true,
+                "FR" => true,
                 //case "RO":
                 //    return true;
-
-                default:
-                    return false;
-            }
+                _ => false,
+            };
         }
     }
 }

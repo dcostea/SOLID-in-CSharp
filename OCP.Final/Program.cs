@@ -7,7 +7,7 @@ namespace ApexCode.SOLID.OCP.Final
     {
         static IEnumerable<string> countries;
 
-        static void Main(string[] args)
+        static void Main()
         {
             var someCountry = "RO";
 

@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DIP.Final.Controllers;
 using DIP.Final.Models;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System.Web.Mvc;
+using NUnit.Framework;
 
 namespace DIP.Final.Tests.Controllers
 {
-    [TestClass]
+    [TestFixture]
     public class HomeControllerTest
     {
         private Mock<IPetRepository> dogRepositoryMock;
 
-        [TestMethod]
+        [Test]
         public void PetControllerMocked()
         {
             // Arrange
@@ -24,8 +24,9 @@ namespace DIP.Final.Tests.Controllers
             var controller = new HomeController(dogRepositoryMock.Object);
 
             // Act
-            var result = controller.Index() as ViewResult;
-            var pets = result.Model as List<Pet>;
+            var response = controller.Get();
+            var result = response.Result as OkObjectResult;
+            var pets = result.Value as IEnumerable<Pet>;
 
             // Assert
             Assert.AreEqual(1, pets.Count());

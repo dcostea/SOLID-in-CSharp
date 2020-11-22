@@ -6,7 +6,7 @@ namespace ApexCode.SOLID.LSP.Final
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var ducks = new List<Duck>
             {
